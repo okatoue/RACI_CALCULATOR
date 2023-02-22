@@ -1,0 +1,16 @@
+import pandas as pd
+
+df = pd.read_csv("Data_list.csv")
+
+# Pipe Material
+# Nominal Pipe Size
+# Pipe Type
+
+pipe_material = input("Input Pipe Material: ")
+nominal_pipe_size = input("Input Nominal Pipe Size: ")
+pipe_type = input("Input Pipe Type: ")
+
+located_row_df = df.loc[(df["Pipe Material"] == pipe_material) & (df["Nominal Pipe Size"] == nominal_pipe_size) & (df["Pipe Type"] == pipe_type)]
+row = located_row_df.loc[1, :]
+
+print(row)
