@@ -11,6 +11,9 @@ nominal_pipe_size = input("Input Nominal Pipe Size: ")
 pipe_type = input("Input Pipe Type: ")
 
 located_row_df = df.loc[(df["Pipe Material"] == pipe_material) & (df["Nominal Pipe Size"] == nominal_pipe_size) & (df["Pipe Type"] == pipe_type)]
-row = located_row_df.loc[1, :]
+located_row_df.index = pd.RangeIndex(len(located_row_df.index))
+row = located_row_df.loc[0, :]
 
+print(row)
+row = located_row_df.loc[0, ["Pipe Type"]]
 print(row)
