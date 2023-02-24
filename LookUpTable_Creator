@@ -1,0 +1,7 @@
+import csv
+import json
+
+with open('LOOKUP table.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    lookup_table = {}
+
