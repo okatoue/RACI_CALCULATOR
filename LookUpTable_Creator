@@ -19,3 +19,8 @@ with open('LOOKUP table.csv', 'r') as csvfile:
         if key not in lookup_table[fruit]:
             lookup_table[fruit][key] = []
         lookup_table[fruit][key].append(value)
+
+    # write the resulting lookup table to a JSON file
+with open('lookup_table.json', 'w') as jsonfile:
+    json.dump(lookup_table, jsonfile, indent=4, separators=(',', ': '))
+    jsonfile.write('\n')
