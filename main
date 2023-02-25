@@ -1,5 +1,7 @@
+
+
 const lookupTable = {
-    "PVC_Water": {
+    "PVC For Water Mains": {
         "4\"": [
             "DR-14",
             "DR-18",
@@ -97,7 +99,7 @@ const lookupTable = {
             "DR-25"
         ]
     },
-    "PVC_Gravity": {
+    "PVC For Gravity Sewer": {
         "4\"": [
             "SDR-26/PS115",
             "SDR-35/PS46"
@@ -163,7 +165,7 @@ const lookupTable = {
             "SDR-35/PS46"
         ]
     },
-    "PVC_IPS": {
+    "PVC Pressure Rated (IPS)": {
         "6\"": [
             "SDR-64",
             "SDR-41",
@@ -233,7 +235,7 @@ const lookupTable = {
             "SDR-17"
         ]
     },
-    "Iron": {
+    "Ductile Iron Pipe": {
         "4\"": [
             "Class 350"
         ],
@@ -325,7 +327,7 @@ const lookupTable = {
             "Class 350"
         ]
     },
-    "HDPE_IPS": {
+    "HDPE Pipe (IPS)": {
         "2\"": [
             "DR-7.3",
             "DR-9",
@@ -588,7 +590,7 @@ const lookupTable = {
             "DR-32.5"
         ]
     },
-    "HDPE_DIPS": {
+    "HDPE Pipe (DIPS)": {
         "4\"": [
             "DR-7",
             "DR-9",
@@ -702,7 +704,7 @@ const lookupTable = {
             "DR-21"
         ]
     },
-    "Steel": {
+    "Steel (NPS)": {
         "1.5\"": [
             "SCH 40 (STD)",
             "SCH 80 (XS)",
@@ -914,10 +916,22 @@ function secondSelection() {
     // Get a reference to the second drop-down menu
     var pipe_size = document.getElementById("pipe_size_HTML");
 
+    // Remove all existing options from the third drop-down menu
+    var pipe_WT = document.getElementById("pipe_WT_HTML");
+
+    // Remove all existing options from the third drop-down menu
+    pipe_WT.innerHTML = "";
+
     // Remove all existing options from the second drop-down menu
     pipe_size.innerHTML = "";
 
-    pipe_size.add(new Option("Select an option", "pipe_size_value"))
+    // Adds Select an option to pipe size, then disables it so it cannot be selected again
+    var option = new Option("Select an option", "pipe_size_value");
+    option.disabled = true;
+    option.selected = true;
+    pipe_size.add(option);
+
+    // Takes the elements that are accoicated with the pipe material and puts them in the second dropdown menu
     for (const key in lookupTable[pipe_mat_value]) {
         pipe_size.add(new Option(key, "pipe_size_value"));
     }
@@ -931,18 +945,39 @@ function thirdSelection() {
     var pipe_size = document.getElementById("pipe_size_HTML");
     var pipe_size_value = pipe_size.options[pipe_size.selectedIndex].text;
 
+    // Get a reference to the third drop-down menu
     var pipe_WT = document.getElementById("pipe_WT_HTML");
-
-    console.log(pipe_size_value);
 
     // Remove all existing options from the second drop-down menu
     pipe_WT.innerHTML = "";
 
+    // An array of Wall thickness's that are associated with the pipe size and pipe material
     var WT_array = lookupTable[pipe_mat_value][pipe_size_value];
 
-    pipe_WT.add(new Option("Select an option", "pipe_size_value"))
+    // Adds Select an option to Wall thickness, then disables it
+    var option = new Option("Select an option", "pipe_WT_value");
+    option.disabled = true;
+    option.selected = true;
+    pipe_WT.add(option);
+
+    // Takes the array of elements and puts them in the third dropdown menu
     WT_array.forEach(function(element) {
         pipe_WT.add(new Option(element, "pipe_WT_value"));
     });
+
+}
+
+function printValues() {
+    var pipe_size = document.getElementById("pipe_size_HTML");
+    var pipe_size_value = pipe_size.options[pipe_size.selectedIndex].text;
+
+    var pipe_WT = document.getElementById("pipe_WT_HTML");
+    var pipe_WT_value = pipe_WT.options[pipe_WT.selectedIndex].text;
+
+    var pipe_mat_value = document.getElementById("pipe_mat_HTML").value;
+
+    document.getElementById("pipe_mat").innerHTML = pipe_mat_value;
+    document.getElementById("pipe_size").innerHTML = pipe_size_value;
+    document.getElementById("pipe_WT").innerHTML = pipe_WT_value;
 
 }
