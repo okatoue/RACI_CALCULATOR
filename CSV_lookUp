@@ -3,3 +3,22 @@ const csvFilePath = "C:/Users/omark/AppData/Roaming/JetBrains/WebStorm2022.3/scr
 
 //PACKAGES
 import csv from 'csvtojson';
+
+//READING THE CSV FILE
+export function read_cvs(pipe_mat, pipe_size, pipe_WT) {
+    csv()
+        .fromFile(csvFilePath)
+        .then((data) => {
+            const df = data;
+
+            const pipe_material = prompt("Input Pipe Material: ");
+            const nominal_pipe_size = prompt("Input Nominal Pipe Size: ");
+            const pipe_type = prompt("Input Pipe Type: ");
+
+            const located_row_df = df.filter((row) => {
+                return row["Pipe Material"] === pipe_mat && row["Nominal Pipe Size"] === pipe_size && row["Pipe Type"] === pipe_WT;
+            });
+            located_row_df.index = Array.from({length: located_row_df.length}, (_, i) => i);
+
+            const row = located_row_df[0];
+            console.log(row);
