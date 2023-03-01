@@ -22,3 +22,19 @@ export function read_cvs(pipe_mat, pipe_size, pipe_WT) {
 
             const row = located_row_df[0];
             console.log(row);
+
+            // OUTPUT VARIABLES
+            const Carrier_OD = located_row_df[0]["Pipe OD"];
+            const Carrier_WT = located_row_df[0]["Pipe Wall Thickness"];
+            const Carrier_ID = located_row_df[0]["Pipe ID"];
+            const Carrier_Bell_OD = located_row_df[0]["Bell OD"];
+            const Carrier_Pipe_Weight = located_row_df[0]["Pipe Weight"];
+
+
+            document.getElementById("Carrier_OD").innerHTML = Carrier_OD;
+            document.getElementById("Carrier_WT").innerHTML = Carrier_WT;
+            document.getElementById("Carrier_ID").innerHTML = Carrier_ID;
+            document.getElementById("Carrier_Bell_OD").innerHTML = Carrier_Bell_OD;
+            document.getElementById("Carrier_Pipe_Weight").innerHTML = Carrier_Pipe_Weight;
+        });
+}
