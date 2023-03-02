@@ -1,0 +1,45 @@
+<html>
+<head>
+    <!--
+    //<script type="type=text/babel" src="http://localhost:8080/scratch_1.html" defer></script>
+    <script type="text/babel" src="http://localhost:8080/CSV_Checker.js" defer></script>
+    <script type="text/babel" src="Server_Side.js" defer></script>
+    -->
+    <script src="scratch.js" defer></script>
+    <script type="module" src="CSV_Checker.js" defer></script>
+</head>
+
+<select id="pipe_mat_HTML" onchange="secondSelection()">
+    <option value="" selected disabled>Select an option</option>
+    <option value="PVC For Water Mains">PVC For Water Mains</option>
+    <option value="PVC For Gravity Sewer">PVC For Gravity Sewer</option>
+    <option value="PVC Pressure Rated (IPS)">PVC Pressure Rated (IPS)</option>
+    <option value="Ductile Iron Pipe">Ductile Iron Pipe</option>
+    <option value="HDPE Pipe (IPS)">HDPE Pipe (IPS)</option>
+    <option value="HDPE Pipe (DIPS)">HDPE Pipe (DIPS)</option>
+    <option value="Steel (NPS)">Steel (NPS)</option>
+</select>
+
+ <!-- Second drop-down menu -->
+<select id="pipe_size_HTML" onchange="thirdSelection()">
+</select>
+
+<select id="pipe_WT_HTML">
+</select>
+
+<button onclick="printValues()">Click me</button>
+
+<body>
+
+<p>Pipe Material: <span id="pipe_mat"></p>
+<p>Pipe Size: <span id="pipe_size"></p>
+<p>Pipe Wall thickness: <span id="pipe_WT"></p>
+
+<p>Carrier OD: <span id="Carrier_OD"></p>
+<p>Carrier Wall Thickness: <span id="Carrier_WT"></p>
+<p>Carrier ID: <span id="Carrier_ID"></p>
+<p>Bell OD: <span id="Carrier_Bell_OD"></p>
+<p>Pipe Weight: <span id="Carrier_Pipe_Weight"></p>
+
+</body>
+
